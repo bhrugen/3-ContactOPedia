@@ -1,5 +1,4 @@
 function Contact(props) {
-  console.log(props);
   return (
     <div
       className="row p-md-2 mb-2"
@@ -22,6 +21,7 @@ function Contact(props) {
       </div>
       <div className="col-1 pt-2">
         <button
+          onClick={() => favoriteClick(props.contact)}
           className={`btn btn-sm m-1 ${
             props.contact.isFavorite ? "btn-warning" : "btn-outline-warning"
           }`}
