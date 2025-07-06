@@ -1,6 +1,7 @@
 import Contact from "./Contact";
 
 function FavoriteContacts(props) {
+  console.log(props);
   return (
     <div
       className="col-12 p-2"
@@ -8,7 +9,9 @@ function FavoriteContacts(props) {
     >
       <div className="text-center text-white-50">Favorites</div>
       <div className="p-2">
-        <Contact></Contact>
+        {props.contacts.map((contact, index) => (
+          <Contact contact={contact} key={index}></Contact>
+        ))}
       </div>
     </div>
   );
