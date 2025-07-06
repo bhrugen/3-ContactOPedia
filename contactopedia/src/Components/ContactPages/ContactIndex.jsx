@@ -1,5 +1,6 @@
 import { useState } from "react";
 import FavoriteContacts from "./FavoriteContacts";
+import GeneralContacts from "./GeneralContacts";
 
 function ContactIndex() {
   const [contactList, setContactList] = useState([
@@ -44,7 +45,11 @@ function ContactIndex() {
           </div>
         </div>
         <div className="py-2">
-          <div className="col-12">GENERAL CONTACT</div>
+          <div className="col-12">
+            <GeneralContacts
+              contacts={contactList.filter((u) => u.isFavorite == false)}
+            />
+          </div>
         </div>
       </div>
     </div>
