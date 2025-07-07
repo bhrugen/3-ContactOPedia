@@ -21,7 +21,7 @@ function Contact(props) {
       </div>
       <div className="col-1 pt-2">
         <button
-          onClick={() => favoriteClick(props.contact)}
+          onClick={() => props.favoriteClick(props.contact)}
           className={`btn btn-sm m-1 ${
             props.contact.isFavorite ? "btn-warning" : "btn-outline-warning"
           }`}

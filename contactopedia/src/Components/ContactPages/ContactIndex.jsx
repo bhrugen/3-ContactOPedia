@@ -44,6 +44,7 @@ function ContactIndex() {
         <div className="py-2">
           <div className="col-12">
             <FavoriteContacts
+              favoriteClick={handleToggleFavorite}
               contacts={contactList.filter((u) => u.isFavorite == true)}
             />
           </div>
@@ -51,6 +52,7 @@ function ContactIndex() {
         <div className="py-2">
           <div className="col-12">
             <GeneralContacts
+              favoriteClick={handleToggleFavorite}
               contacts={contactList.filter((u) => u.isFavorite == false)}
             />
           </div>
