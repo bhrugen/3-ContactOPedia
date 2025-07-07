@@ -105,7 +105,10 @@ function ContactIndex() {
         </div>
         <div className="py-2">
           <div className="col-12">
-            <AddContact handleAddContact={handleAddContact} />
+            <AddContact
+              handleAddContact={handleAddContact}
+              isUpdating={isUpdating}
+            />
           </div>
         </div>
         <div className="py-2">
