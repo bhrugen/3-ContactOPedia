@@ -28,13 +28,13 @@ function ContactIndex() {
     },
   ]);
 
-  const [selectedContact, SetSelectedContact] = useState(null);
-  const [isUpdating, SetIsUpdating] = useState(false);
+  const [selectedContact, setSelectedContact] = useState(null);
+  const [isUpdating, setIsUpdating] = useState(false);
 
   function handleUpdateClick(contact) {
     console.log(contact);
-    SetSelectedContact(contact);
-    SetIsUpdating(true);
+    setSelectedContact(contact);
+    setIsUpdating(true);
   }
 
   function handleToggleFavorite(contact) {
@@ -63,8 +63,8 @@ function ContactIndex() {
       });
     });
 
-    SetSelectedContact(null);
-    SetIsUpdating(false);
+    setSelectedContact(null);
+    setIsUpdating(false);
     return { status: "success", msg: "Contact was updated successfully." };
   }
 
@@ -111,8 +111,8 @@ function ContactIndex() {
   }
 
   function handleCancelUpdateContact() {
-    SetSelectedContact(null);
-    SetIsUpdating(false);
+    setSelectedContact(null);
+    setIsUpdating(false);
   }
 
   return (
