@@ -28,6 +28,15 @@ function ContactIndex() {
     },
   ]);
 
+  const [selectedContact, SetSelectedContact] = useState(null);
+  const [isUpdating, SetIsUpdating] = useState(false);
+
+  function handleUpdateClick(contact) {
+    console.log(contact);
+    SetSelectedContact(contact);
+    SetIsUpdating(true);
+  }
+
   function handleToggleFavorite(contact) {
     setContactList((prevState) => {
       return prevState.map((obj) => {
@@ -104,6 +113,7 @@ function ContactIndex() {
             <FavoriteContacts
               favoriteClick={handleToggleFavorite}
               deleteClick={handleDeleteContact}
+              updateClick={handleUpdateClick}
               contacts={contactList.filter((u) => u.isFavorite == true)}
             />
           </div>
@@ -113,6 +123,7 @@ function ContactIndex() {
             <GeneralContacts
               handleAddContact={handleAddContact}
               favoriteClick={handleToggleFavorite}
+              updateClick={handleUpdateClick}
               deleteClick={handleDeleteContact}
               contacts={contactList.filter((u) => u.isFavorite == false)}
             />

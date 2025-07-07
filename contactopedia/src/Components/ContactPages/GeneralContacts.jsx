@@ -12,6 +12,7 @@ function GeneralContacts(props) {
           <Contact
             favoriteClick={props.favoriteClick}
             deleteClick={props.deleteClick}
+            updateClick={props.updateClick}
             contact={contact}
             key={index}
           ></Contact>
