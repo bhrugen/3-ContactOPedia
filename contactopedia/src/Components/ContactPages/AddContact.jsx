@@ -9,12 +9,11 @@ function AddContact(props) {
   const [formData, SetFormData] = useState({
     name: "",
     email: "",
-    phone: "32234",
+    phone: "",
   });
 
   function handleFormInputChange(e) {
     const { name, value } = e.target;
-    console.log(name, value);
     SetFormData({
       ...formData,
       [name]: value,

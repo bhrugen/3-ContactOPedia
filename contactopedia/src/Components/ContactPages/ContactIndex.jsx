@@ -53,7 +53,8 @@ function ContactIndex() {
 
     const newFinalContact = {
       ...newContact,
-      id: contactList[contactList.length - 1].id + 1,
+      id:
+        contactList.length > 0 ? contactList[contactList.length - 1].id + 1 : 1,
       isFavorite: false,
     };
     setContactList((prevState) => {
