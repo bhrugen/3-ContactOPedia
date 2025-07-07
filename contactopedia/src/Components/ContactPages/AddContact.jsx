@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function AddContact() {
+function AddContact(props) {
   const [messages, SetMessages] = useState({
     errorMessage: "",
     successMessage: "",
@@ -15,6 +15,7 @@ function AddContact() {
 
     try {
       console.log(contactData);
+      props.handleAddContact(contactData);
     } catch (error) {
       console.error("Error adding contact", error);
     }
