@@ -1,7 +1,13 @@
 function AddContact() {
   function handleAddContactForm(e) {
     e.preventDefault();
-    console.log(e);
+    const formData = new FormData(e.target);
+    const contactData = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      phone: formData.get("phone"),
+    };
+    console.log(contactData);
   }
 
   return (
