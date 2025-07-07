@@ -20,7 +20,7 @@ function AddContact(props) {
         SetMessages({ errorMessage: undefined, successMessage: response.msg });
       } else {
         SetMessages({
-          errorMessage: "Error Encountered",
+          errorMessage: response.msg,
           successMessage: undefined,
         });
       }
