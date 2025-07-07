@@ -11,6 +11,7 @@ function GeneralContacts(props) {
         {props.contacts.map((contact, index) => (
           <Contact
             favoriteClick={props.favoriteClick}
+            deleteClick={props.deleteClick}
             contact={contact}
             key={index}
           ></Contact>

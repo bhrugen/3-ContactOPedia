@@ -28,7 +28,27 @@ function ContactIndex() {
   ]);
 
   function handleToggleFavorite(contact) {
-    console.log(contact);
+    setContactList((prevState) => {
+      return prevState.map((obj) => {
+        if (obj.id == contact.id) {
+          return { ...obj, isFavorite: !obj.isFavorite };
+        }
+        return obj;
+      });
+    });
+  }
+
+  function handleDeleteContact(contactId) {
+    console.log(contactId);
+    setContactList((prevState) => {
+      return prevState.filter((obj) => {
+        if (obj.id !== contactId) {
+          return true;
+        } else {
+          return false;
+        }
+      });
+    });
   }
 
   return (
@@ -45,6 +65,7 @@ function ContactIndex() {
           <div className="col-12">
             <FavoriteContacts
               favoriteClick={handleToggleFavorite}
+              deleteClick={handleDeleteContact}
               contacts={contactList.filter((u) => u.isFavorite == true)}
             />
           </div>
@@ -53,6 +74,7 @@ function ContactIndex() {
           <div className="col-12">
             <GeneralContacts
               favoriteClick={handleToggleFavorite}
+              deleteClick={handleDeleteContact}
               contacts={contactList.filter((u) => u.isFavorite == false)}
             />
           </div>
