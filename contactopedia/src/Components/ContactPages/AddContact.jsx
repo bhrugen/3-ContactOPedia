@@ -15,9 +15,21 @@ function AddContact(props) {
 
     try {
       console.log(contactData);
-      props.handleAddContact(contactData);
+      const response = props.handleAddContact(contactData);
+      if (response.status == "success") {
+        SetMessages({ errorMessage: undefined, successMessage: response.msg });
+      } else {
+        SetMessages({
+          errorMessage: "Error Encountered",
+          successMessage: undefined,
+        });
+      }
     } catch (error) {
       console.error("Error adding contact", error);
+      SetMessages({
+        errorMessage: "Error Encountered",
+        successMessage: undefined,
+      });
     }
   }
 
@@ -52,11 +64,13 @@ function AddContact(props) {
 
           {messages.successMessage && (
             <div className="col-12 text-center text-success">
-              Success Message
+              {messages.successMessage}
             </div>
           )}
           {messages.errorMessage && (
-            <div className="col-12 text-center text-danger">Error Message</div>
+            <div className="col-12 text-center text-danger">
+              {messages.errorMessage}
+            </div>
           )}
           <div className="col-12">
             <button className="btn btn-primary btn-sm form-control">
