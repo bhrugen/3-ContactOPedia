@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function AddContact(props) {
   const [messages, SetMessages] = useState({
@@ -11,6 +11,22 @@ function AddContact(props) {
     email: "",
     phone: "",
   });
+
+  useEffect(() => {
+    if (props.isUpdating && props.selectedContact) {
+      SetFormData({
+        name: props.selectedContact.name,
+        email: props.selectedContact.email,
+        phone: props.selectedContact.phone,
+      });
+    } else {
+      SetFormData({
+        name: "",
+        email: "",
+        phone: "",
+      });
+    }
+  }, [props.isUpdating, props.selectedContact]);
 
   function handleFormInputChange(e) {
     const { name, value } = e.target;

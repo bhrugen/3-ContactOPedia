@@ -114,6 +114,7 @@ function ContactIndex() {
             <AddContact
               handleAddContact={handleAddContact}
               isUpdating={isUpdating}
+              selectedContact={selectedContact}
               cancelUpdateContact={handleCancelUpdateContact}
             />
           </div>
