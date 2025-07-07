@@ -48,6 +48,26 @@ function ContactIndex() {
     });
   }
 
+  function handleUpdateContact(contact) {
+    setContactList((prevState) => {
+      return prevState.map((obj) => {
+        if (obj.id == contact.id) {
+          return {
+            ...obj,
+            name: contact.name,
+            email: contact.email,
+            phone: contact.phone,
+          };
+        }
+        return obj;
+      });
+    });
+
+    SetSelectedContact(null);
+    SetIsUpdating(false);
+    return { status: "success", msg: "Contact was updated successfully." };
+  }
+
   function handleAddContact(newContact) {
     //validation
     const duplicateRecord = contactList.filter((x) => {
@@ -114,6 +134,7 @@ function ContactIndex() {
             <AddContact
               handleAddContact={handleAddContact}
               isUpdating={isUpdating}
+              handleUpdateContact={handleUpdateContact}
               selectedContact={selectedContact}
               cancelUpdateContact={handleCancelUpdateContact}
             />

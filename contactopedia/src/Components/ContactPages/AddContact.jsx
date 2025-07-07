@@ -44,9 +44,29 @@ function AddContact(props) {
 
     try {
       console.log(contactData);
-      const response = props.handleAddContact(contactData);
+      let response = undefined;
+
+      if (props.isUpdating && props.selectedContact) {
+        //update
+        response = props.handleUpdateContact({
+          id: props.selectedContact.id,
+          isFavorite: props.selectedContact.isFavorite,
+          ...contactData,
+        });
+      } else {
+        //creating
+        response = props.handleAddContact(contactData);
+      }
+
       if (response.status == "success") {
         SetMessages({ errorMessage: undefined, successMessage: response.msg });
+        if (!props.isUpdating) {
+          SetFormData({
+            name: "",
+            email: "",
+            phone: "",
+          });
+        }
       } else {
         SetMessages({
           errorMessage: response.msg,
