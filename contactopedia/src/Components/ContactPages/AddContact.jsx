@@ -1,11 +1,23 @@
+import { useState } from "react";
+
 function AddContact() {
+  const [messages, SetMessages] = useState({
+    errorMessage: "",
+    successMessage: "",
+  });
+
   function handleAddContactForm(formData) {
     const contactData = {
       name: formData.get("name"),
       email: formData.get("email"),
       phone: formData.get("phone"),
     };
-    console.log(contactData);
+
+    try {
+      console.log(contactData);
+    } catch (error) {
+      console.error("Error adding contact", error);
+    }
   }
 
   return (
@@ -37,8 +49,14 @@ function AddContact() {
             />
           </div>
 
-          <div className="col-12 text-center text-success">Success Message</div>
-          <div className="col-12 text-center text-danger">Error Message</div>
+          {messages.successMessage && (
+            <div className="col-12 text-center text-success">
+              Success Message
+            </div>
+          )}
+          {messages.errorMessage && (
+            <div className="col-12 text-center text-danger">Error Message</div>
+          )}
           <div className="col-12">
             <button className="btn btn-primary btn-sm form-control">
               Create
