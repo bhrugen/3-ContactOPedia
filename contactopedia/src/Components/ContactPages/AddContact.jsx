@@ -98,7 +98,10 @@ function AddContact(props) {
           </div>
           {props.isUpdating && (
             <div className="col-6">
-              <button className="btn btn-danger btn-sm form-control">
+              <button
+                className="btn btn-danger btn-sm form-control"
+                onClick={() => props.cancelUpdateContact()}
+              >
                 Cancel
               </button>
             </div>

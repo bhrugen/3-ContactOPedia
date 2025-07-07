@@ -89,6 +89,12 @@ function ContactIndex() {
   function handleRemoveAllContact() {
     setContactList([]);
   }
+
+  function handleCancelUpdateContact() {
+    SetSelectedContact(null);
+    SetIsUpdating(false);
+  }
+
   return (
     <div className="container" style={{ minHeight: "85vh" }}>
       <div className="py-3">
@@ -108,6 +114,7 @@ function ContactIndex() {
             <AddContact
               handleAddContact={handleAddContact}
               isUpdating={isUpdating}
+              cancelUpdateContact={handleCancelUpdateContact}
             />
           </div>
         </div>
