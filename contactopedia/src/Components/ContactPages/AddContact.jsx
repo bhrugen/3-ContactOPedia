@@ -1,7 +1,5 @@
 function AddContact() {
-  function handleAddContactForm(e) {
-    e.preventDefault();
-    const formData = new FormData(e.target);
+  function handleAddContactForm(formData) {
     const contactData = {
       name: formData.get("name"),
       email: formData.get("email"),
@@ -12,7 +10,7 @@ function AddContact() {
 
   return (
     <div className="border col-12 text-white p-2">
-      <form onSubmit={handleAddContactForm}>
+      <form action={handleAddContactForm}>
         <div className="row p-2">
           <div className="col-12 text-white-50 text-center h5">
             Add a new Contact
@@ -42,10 +40,7 @@ function AddContact() {
           <div className="col-12 text-center text-success">Success Message</div>
           <div className="col-12 text-center text-danger">Error Message</div>
           <div className="col-12">
-            <button
-              type="submit"
-              className="btn btn-primary btn-sm form-control"
-            >
+            <button className="btn btn-primary btn-sm form-control">
               Create
             </button>
           </div>
